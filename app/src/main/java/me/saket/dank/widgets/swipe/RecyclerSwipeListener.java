@@ -7,7 +7,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import me.saket.dank.utils.SimpleRecyclerViewOnChildAttachStateChangeListener;
-import timber.log.Timber;
 
 /**
  * Not using {@link ItemTouchHelper}, because it only supports "dismissing" items with swipe.
@@ -89,11 +88,15 @@ public class RecyclerSwipeListener extends RecyclerView.SimpleOnItemTouchListene
         }
 
         // Add inertia if swiping isn't enabled.
-        if (!viewBeingSwiped.isSwipeEnabled()) {
+        float swipeTranslation = viewBeingSwiped.getSwipeTranslation();
+        boolean swipingFromEndToStart = swipeTranslation < 0f;
+        boolean swipingBackToPosition = Math.signum(swipeTranslation) == Math.signum(distanceX);
+        SwipeDirection swipeDirection = swipingFromEndToStart ? SwipeDirection.END_TO_START : SwipeDirection.START_TO_END;
+        if (!swipingBackToPosition && !viewBeingSwiped.isSwipeEnabled(swipeDirection)) {
           distanceX /= 10;
         }
 
-        float newTranslationX = viewBeingSwiped.getSwipeTranslation() - distanceX;
+        float newTranslationX = swipeTranslation - distanceX;
         viewBeingSwiped.setSwipeTranslation(newTranslationX);
         return true;
       }
