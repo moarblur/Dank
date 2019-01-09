@@ -27,7 +27,7 @@ class SyntheticSubmissionAndComments {
     val body2 = "Comments (and their replies) can be collapsed by tapping on them."
     val body3 = "Drag the cat's image downwards and release to close this tutorial."
 
-    submission = SyntheticSubmission(3)
+    submission = SyntheticSubmission(3, title = "Here's a heart-warming photo to start your journey")
 
     val comment2 = SyntheticComment(body2, submission)
     val comment1And2 = SyntheticComment(body, submission, listOf(comment2))
@@ -44,6 +44,7 @@ class SyntheticSubmissionAndComments {
 
 class SyntheticSubmission @JvmOverloads constructor(
   private val commentCount: Int,
+  private val title: String,
   override val created: Date = Date(System.currentTimeMillis())
 ) : Submission() {
 
@@ -88,7 +89,7 @@ class SyntheticSubmission @JvmOverloads constructor(
   }
 
   override fun getTitle(): String {
-    return "Here's a heart-warming photo to start your journey"
+    return title
   }
 
   override fun isHidden(): Boolean {

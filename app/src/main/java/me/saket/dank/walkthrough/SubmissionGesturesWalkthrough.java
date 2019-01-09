@@ -168,7 +168,7 @@ public class SubmissionGesturesWalkthrough {
     private SubmissionSwipeActionsRepository submissionSwipeActionsRepository;
     private int discoveryCount = 0;
     private SwipeAction lastPerformedAction;
-    private Submission syntheticSubmission = new SyntheticSubmission(3);
+    private Submission syntheticSubmission = new SyntheticSubmission(3, "Here's a heart-warming photo to start your journey");
 
     @Inject
     public WalkthroughSwipeActionsProvider(
