@@ -257,11 +257,11 @@ constructor(
     }
 
     titleBuilder = titleBuilder
+        .append(Html.fromHtml(submission.title))
+        .append("  ")
         .pushSpan(ForegroundColorSpan(color(context, voteDirectionColor)))
         .append(Strings.abbreviateScore(vote.toFloat()))
         .popSpan()
-        .append("  ")
-        .append(Html.fromHtml(submission.title))
 
     val byline = context.getString(
         R.string.submission_byline,

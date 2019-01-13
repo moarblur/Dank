@@ -248,12 +248,12 @@ public class SubredditUiConstructor {
     int postedAndPendingCommentCount = submission.getCommentCount() + pendingSyncReplyCount;
 
     Truss titleBuilder = new Truss();
+    //noinspection deprecation
+    titleBuilder.append(Html.fromHtml(submission.getTitle()));
+    titleBuilder.append("  ");
     titleBuilder.pushSpan(new ForegroundColorSpan(ContextCompat.getColor(c, Themes.voteColor(voteDirection))));
     titleBuilder.append(Strings.abbreviateScore(submissionScore));
     titleBuilder.popSpan();
-    titleBuilder.append("  ");
-    //noinspection deprecation
-    titleBuilder.append(Html.fromHtml(submission.getTitle()));
 
     // Setting textAllCaps removes all spans, so I'm applying uppercase manually.
     Truss bylineBuilder = new Truss();
