@@ -220,7 +220,7 @@ dependencies {
   implementation "com.nytimes.android:filesystem3:$versions.nytStore"
   implementation "com.facebook.stetho:stetho:$versions.stetho"
   implementation "com.facebook.stetho:stetho-okhttp3:$versions.stetho"
-  implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+  implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 }
 
 // https://github.com/google/dagger/issues/1449#issuecomment-495404186
